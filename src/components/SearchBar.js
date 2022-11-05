@@ -34,22 +34,40 @@ const SearchBar = () => {
 
   const renderedItems = items.map((item) => {
     return (
-      <div key={item.pageid}>
-        <h2>{item.title}</h2>
-        <p>
-          <span dangerouslySetInnerHTML={{ __html: item.snippet }}></span>
-        </p>
+      <div className="item" key={item.pageid}>
+        <div className="right floated content">
+          <a
+            href={`https://en.wikipedia.org?curid=${item.pageid}`}
+            className="ui button"
+          >
+            Visit
+          </a>
+        </div>
+        <div className="content">
+          <h2>{item.title}</h2>
+          <p>
+            <span dangerouslySetInnerHTML={{ __html: item.snippet }}></span>
+          </p>
+        </div>
       </div>
     );
   });
   return (
     <div>
-      <form>
-        <label>Search for a topic</label>
-        <input type="text" onChange={(e) => setText(e.target.value)} />
-      </form>
-
-      <div className="rendered">{renderedItems}</div>
+      <div className="ui form">
+        <div className="field">
+          <label>Enter Search term</label>
+          <input
+            autoFocus
+            value={text}
+            className="input"
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
+          />
+        </div>
+      </div>
+      <div className="ui celled list">{renderedItems}</div>
     </div>
   );
 };
