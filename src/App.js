@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Accordion from "./components/Accordion";
+import Dropdown from "./components/Dropdown";
 import SearchBar from "./components/SearchBar";
 
 const questions = [
@@ -18,10 +19,27 @@ const questions = [
   },
 ];
 
+const options = [
+  {
+    description: "This is the color red.",
+    value: "red",
+  },
+  {
+    description: "This is the color green.",
+    value: "green",
+  },
+  {
+    description: "This is the color blue.",
+    value: "blue",
+  },
+];
+
 const App = () => {
+  //   const [color, setColor] = useState(options[0]);
+
   return (
     <div>
-      <Accordion questions={questions} />
+      <Dropdown options={options} />
     </div>
   );
 };
