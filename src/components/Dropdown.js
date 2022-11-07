@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const Dropdown = ({ options }) => {
+const Dropdown = ({ options, text, kind, setKind }) => {
   //   console.log(color);
-  const [color, setColor] = useState(options[0]);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -16,7 +15,7 @@ const Dropdown = ({ options }) => {
     });
   }, []);
   const renderedColors = options.map((option) => {
-    if (option.description === color.description) {
+    if (option.description === kind.description) {
       return null;
     }
     return (
@@ -24,7 +23,7 @@ const Dropdown = ({ options }) => {
         className="item"
         key={option.description}
         onClick={() => {
-          setColor(option);
+          setKind(option);
         }}
       >
         {option.description}
@@ -34,7 +33,7 @@ const Dropdown = ({ options }) => {
   return (
     <div className="ui form">
       <div className="field">
-        <label className="label">Select a Color</label>
+        <label className="label">{text}</label>
         <div
           className={`ui selection visible dropdown`}
           onClick={() => {
@@ -42,7 +41,7 @@ const Dropdown = ({ options }) => {
           }}
         >
           <i className="dropdown icon"></i>
-          <div className="text">{color.description}</div>
+          <div className="text">{kind.description}</div>
           <div className={`menu ${open ? "visible transition" : ""}`}>
             {renderedColors}
           </div>
