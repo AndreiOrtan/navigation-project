@@ -58,7 +58,7 @@ const Translate = () => {
     <div>
       <div className="ui form">
         <div className="field">
-          <label>Enter Search term</label>
+          <label>Enter to translate</label>
           <input
             autoFocus
             className="input"
